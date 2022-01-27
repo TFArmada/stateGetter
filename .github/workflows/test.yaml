@@ -11,7 +11,7 @@ jobs:
     steps:
       -
         name: stateGetter Step
-        uses: TFArmada/stateGetter
+        uses: TFArmada/stateGetter@master
         with:
           filename: state.tfstate
           organization: sumup
