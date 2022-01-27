@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: stateGetter Step
+        name: stateGetter get
         uses: TFArmada/stateGetter@master
         with:
           filename: state.tfstate
@@ -18,3 +18,7 @@ jobs:
           workspace: autosg-classic-live
         env:
           TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+      -
+        name: verify file
+        run: |
+          cat state.tfstate | wc -l
