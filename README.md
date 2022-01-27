@@ -1,10 +1,21 @@
 # stateGetter
-***stateGetter*** is a simple Go command line tool that downloads ***latest*** Terraform Cloud remote state files for given workspace.
+***stateGetter*** is a simple Go command line tool and GitHub action that downloads ***latest*** Terraform Cloud remote state files for given workspace.
  
-It's intended use is in GitHub Actions to dynamically prepare Terraform provider configuration based
- on remote terraform state outputs.
+## GitHub Action
+```yaml
+    steps:
+      -
+        name: stateGetter get
+        uses: TFArmada/stateGetter@master
+        with:
+          filename: state.tfstate #Filename to save the state as
+          organization: sumup #Terraform Cloud Organization 
+          workspace: autosg-classic-live #A workspace in the Terraform Cloud Organization
+        env:
+          TFE_TOKEN: ${{ secrets.TFE_TOKEN }} #Terraform Cloud Token
+```
  
-## Use
+## Use as standalone binary
 ```shell script
 Usage of ./stateGetter:
   -filename string
@@ -20,7 +31,7 @@ export TFE_TOKEN=<secret tfe token>
 ./stateGetter -organization ganekov -workspace armada-accounts-prime
 ```
 
-## Github Action Example 
+## Using the binary in GitHub Action
 ```yaml
 name: Generate
 on: [push]
