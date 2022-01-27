@@ -1,0 +1,20 @@
+name: Test stateGetter
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  stategetter:
+    name: stateGetter Job
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: stateGetter Step
+        uses: TFArmada/stateGetter
+        with:
+          filename: state.tfstate
+          organization: sumup
+          workspace: autosg-classic-live
+        env:
+          TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
