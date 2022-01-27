@@ -1,6 +1,9 @@
 # action.yml
 name: 'stateGetter'
 description: 'get Terraform Cloud State'
+branding:
+  icon: 'download'  
+  color: 'purple'
 inputs:
   filename:  # id of input
     description: 'Output file name'
